@@ -1,0 +1,457 @@
+/* Modern Reset & Base Styles */
+:root {
+    --primary: #4361ee;
+    --primary-light: #4895ef;
+    --accent: #4cc9f0;
+    --dark: #0f0f13;
+    --darker: #0a0a0d;
+    --light: #f8f9fa;
+    --text: #e9ecef;
+    --text-light: #adb5bd;
+    --success: #52b788;
+    --warning: #ff758f;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* Animated Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(67, 97, 238, 0.1) 0%, transparent 25%),
+      radial-gradient(circle at 80% 70%, rgba(76, 201, 240, 0.1) 0%, transparent 25%),
+      var(--dark);
+    z-index: -2;
+    animation: pulse 15s ease infinite alternate;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+  
+  /* Floating Particles Animation */
+  .particle {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    z-index: -1;
+    animation: float linear infinite;
+  }
+  
+  @keyframes float {
+    to { transform: translateY(-100vh) rotate(360deg); }
+  }
+  
+  /* Header - Glass Morphism */
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background: rgba(15, 15, 19, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transform: translateY(0);
+    transition: var(--transition);
+  }
+  
+  .header-hidden {
+    transform: translateY(-100%);
+  }
+  
+  .logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    transition: var(--transition);
+  }
+  
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+  }
+  
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+  }
+  
+  nav a:hover {
+    color: var(--text);
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  /* Hero Section - Animated Gradient */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(67, 97, 238, 0.1) 0%,
+      rgba(76, 201, 240, 0.1) 50%,
+      rgba(67, 97, 238, 0.1) 100%
+    );
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+  }
+  
+  @keyframes gradientBG {
+    0% { transform: translateX(-25%); }
+    50% { transform: translateX(25%); }
+    100% { transform: translateX(-25%); }
+  }
+  
+  .hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--text), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    color: var(--text-light);
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .hero button {
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .hero button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-light), var(--accent));
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+  }
+  
+  .hero button:hover::before {
+    opacity: 1;
+  }
+  
+  .hero button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+  }
+  
+  /* Sections - Animated Entrances */
+  section {
+    padding: 8rem 2rem;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  section:nth-child(even) {
+    background: rgba(10, 10, 13, 0.5);
+  }
+  
+  section h3 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+  }
+  
+  section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+  }
+  
+  /* Form Elements - Modern Style */
+  input[type="file"],
+  input[type="text"] {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    margin: 1.5rem auto;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  input[type="file"]::file-selector-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  input[type="file"]::file-selector-button:hover {
+    background: var(--primary-light);
+  }
+  
+  input[type="file"]:focus,
+  input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+  }
+  
+  /* Buttons - Animated */
+  button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+  }
+  
+  button:hover::after {
+    left: 100%;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+  }
+  
+  /* Result Boxes - Glass Effect */
+  .result-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .result-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(67, 97, 238, 0.2);
+    border-color: rgba(76, 201, 240, 0.3);
+  }
+  
+  .result-list {
+    list-style: none;
+    margin: 2rem auto;
+    max-width: 800px;
+  }
+  
+  .result-list li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+    transition: var(--transition);
+    animation: fadeInUp 0.6s ease-out;
+    transform-origin: left center;
+  }
+  
+  .result-list li:hover {
+    transform: scale(1.02);
+    border-left-color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--darker);
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+  }
+  
+  footer p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+  }
+  
+  footer a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      padding: 1rem;
+    }
+    
+    nav ul {
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+    
+    section {
+      padding: 5rem 1rem;
+    }
+    
+    section h3 {
+      font-size: 2rem;
+    }
+  }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/styles.css">
+
+    
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>Study Buddy</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#upload">Upload</a></li>
+            <li><a href="#summarize">Summarize</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#ask">Ask</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h2>Your AI-powered Study Assistant</h2>
+    <p>Upload PDFs, Summarize Notes, Generate Quizzes & Ask Questions all in one place.</p>
+    <button onclick="document.getElementById('upload').scrollIntoView({ behavior: 'smooth' })">Start Now</button>
+</section>
+
+<section id="upload">
+    <h3>Upload Your PDF</h3>
+    <input type="file" id="file-upload">
+    <button onclick="uploadFile()">Upload PDF</button>
+</section>
+
+<section id="summarize">
+    <h3>Summary</h3>
+    <button onclick="getSummary()">Summarize</button>
+    <div id="summary-text" class="result-box"></div>
+</section>
+
+<section id="quiz">
+    <h3>Generate Quiz</h3>
+    <button onclick="generateQuiz()">Generate Quiz</button>
+    <ul id="quiz-questions" class="result-list"></ul>
+</section>
+
+<section id="ask">
+    <h3>Ask a Question</h3>
+    <input type="text" id="question-input" placeholder="Ask a question...">
+    <button onclick="askQuestion()">Ask</button>
+    <div id="answer-text" class="result-box"></div>
+</section>
+
+<section id="about">
+    <h3>About Study Buddy</h3>
+    <p>Study Buddy helps students by using AI to enhance the study process. Upload your study materials, and get summaries, quizzes, and more!</p>
+</section>
+
+<footer>
+    <p>&copy; 2025 Study Buddy. All Rights Reserved. Developed By <a href="https://www.linkedin.com/in/sanyi-diriba/">Sanyi Diriba</a></p>
+</footer>
+
+<script src="./static/scripts.js"></script>
+</body>
+</html>
