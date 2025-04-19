@@ -1,4 +1,4 @@
-/* Modern Reset & Base Styles */
+/* Root Colors */
 :root {
     --primary: #4361ee;
     --primary-light: #4895ef;
@@ -32,7 +32,7 @@
     overflow-x: hidden;
   }
   
-  /* Animated Background */
+  /* Animated Background Of the Home Page*/
   body::before {
     content: '';
     position: fixed;
@@ -53,7 +53,6 @@
     100% { opacity: 1; }
   }
   
-  /* Floating Particles Animation */
   .particle {
     position: fixed;
     background: rgba(255, 255, 255, 0.5);
@@ -66,7 +65,7 @@
     to { transform: translateY(-100vh) rotate(360deg); }
   }
   
-  /* Header - Glass Morphism */
+  /* Header  */
   header {
     position: fixed;
     width: 100%;
@@ -133,7 +132,7 @@
     width: 100%;
   }
   
-  /* Hero Section - Animated Gradient */
+  /* Hero Section  */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -241,6 +240,7 @@
   section:nth-child(even) {
     background: rgba(10, 10, 13, 0.5);
   }
+  
   
   section h3 {
     font-size: 2.5rem;
