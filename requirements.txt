@@ -18,3 +18,4 @@ typing_extensions==4.13.2
 uvicorn==0.34.1
 virtualenv==20.30.0
 groq
+python-multipart
