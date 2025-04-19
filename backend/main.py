@@ -17,7 +17,7 @@ async def read_root():
         return f.read()
 
 
-# File upload route
+# File upload routes
 @app.post("/upload/")
 async def upload_file(file: UploadFile = File(...)):
     global uploaded_text_storage
@@ -26,21 +26,21 @@ async def upload_file(file: UploadFile = File(...)):
     uploaded_text_storage = extracted_text
     return {"text": extracted_text}
 
-# Summarize text route
+# Summarize text routes
 @app.get("/summarize/")
 async def summarize():
     global uploaded_text_storage
     summary = summarize_text(uploaded_text_storage)
     return {"summary": summary}
 
-# Quiz generation route
+# Quiz generation routes
 @app.get("/generate-quiz/")
 async def quiz():
     global uploaded_text_storage
     questions = generate_quiz_questions(uploaded_text_storage)
-    return {"questions": questions}
+    return {"questions": questions} 
 
-# Question and Answers route
+# Question and Answers routes
 @app.post("/ask/")
 async def ask_question(data: dict):
     global uploaded_text_storage
