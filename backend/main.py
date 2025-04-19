@@ -18,6 +18,7 @@ async def read_root():
 
 
 # File upload routes
+
 @app.post("/upload/")
 async def upload_file(file: UploadFile = File(...)):
     global uploaded_text_storage
@@ -27,7 +28,8 @@ async def upload_file(file: UploadFile = File(...)):
     return {"text": extracted_text}
 
 # Summarize text routes
-@app.get("/summarize/")
+
+@app.get("/summarize/ ")
 async def summarize():
     global uploaded_text_storage
     summary = summarize_text(uploaded_text_storage)
