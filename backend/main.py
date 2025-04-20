@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.cors import CORSMiddleware
 from backend.ai_utils import extract_text_from_pdf, summarize_text, generate_quiz_questions, answer_user_question
 
 uploaded_text_storage = ""
@@ -10,6 +11,14 @@ app = FastAPI()
 # Connecting with my front-end
 app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 
+# Allow CORS from your frontend domain
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://study-buddy-ai.onrender.com"],  # Replace with your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 # Home page connecting to index.html
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
@@ -29,7 +38,7 @@ async def upload_file(file: UploadFile = File(...)):
 
 # Summarize text routes
 
-@app.get("/summarize/ ")
+@app.get("/summarize/")
 async def summarize():
     global uploaded_text_storage
     summary = summarize_text(uploaded_text_storage)
